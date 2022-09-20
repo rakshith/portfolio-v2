@@ -1,9 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import ExperienceCard from "./ExperienceCard";
-type Props = {};
+import { Experience } from "../typings";
+type Props = {
+  experiences: Experience[];
+};
 
-export default function WorkExperience({}: Props) {
+export default function WorkExperience({ experiences }: Props) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -21,10 +24,9 @@ export default function WorkExperience({}: Props) {
       snap-x snap-mandatory mt-40 scrollbar 
       scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80"
       >
-        <ExperienceCard />
-        <ExperienceCard />
-        <ExperienceCard />
-        <ExperienceCard />
+        {experiences.map((experience) => (
+          <ExperienceCard key={experience._id} experience={experience} />
+        ))}
       </div>
     </motion.div>
   );

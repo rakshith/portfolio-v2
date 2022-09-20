@@ -1,10 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Project } from "../typings";
+import { urlFor } from "../sanity";
 
-type Props = {};
+type Props = {
+  projects: Project[];
+};
 
-export default function Projects({}: Props) {
-  const projects = [1, 2, 3, 4, 5];
+export default function Projects({ projects }: Props) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -35,22 +38,27 @@ export default function Projects({}: Props) {
               transition={{ duration: 1.2 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              src="https://camo.githubusercontent.com/83ffddfdf9a1d874d8744be03f8293665149ef89ed024ff07ccf079f79e84b58/68747470733a2f2f692e6962622e636f2f4a64363342506b2f6e6574666c69782e706e67"
+              src={urlFor(project?.image).url()}
             />
             <div className="space-y-10 px-0 md:px-10 max-w-6xl">
               <h4 className="text-4xl font-semibold text-center">
                 <span className="underline decoration-[#F7AB0A]/50">
-                  Case study {index + 1} of {projects.length}
+                  Case study {index + 1} of {projects.length}:
                 </span>{" "}
-                : Clones
+                {project?.title}
               </h4>
+              <div className="flex items-center space-x-2 justify-center">
+                {project?.technologies.map((tech) => (
+                  <img
+                    className="h-10 w-10"
+                    key={tech._id}
+                    src={urlFor(tech.image).url()}
+                    alt=""
+                  />
+                ))}
+              </div>
               <p className="text-lg text-center md:text-left">
-                Netflix clone worked as part of my hobbie Netflix clone worked
-                as part of my hobbie Netflix clone worked as part of my hobbie
-                Netflix clone worked as part of my hobbie Netflix clone worked
-                as part of my hobbie Netflix clone worked as part of my hobbie
-                Netflix clone worked as part of my hobbie Netflix clone worked
-                as part of my hobbie Netflix clone worked as part of my hobbie
+                {project?.summary}
               </p>
             </div>
           </div>

@@ -1,8 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-type Props = {};
+import { PageInfo } from "../typings";
+import { urlFor } from "../sanity";
+type Props = {
+  pageInfo: PageInfo;
+};
 
-export default function About({}: Props) {
+export default function About({ pageInfo }: Props) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -19,7 +23,7 @@ export default function About({}: Props) {
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1.2 }}
-        src="https://avatars.githubusercontent.com/u/926932?v=4"
+        src={urlFor(pageInfo.heroImage).url()}
         className="-mb-20 md:mb-0 flex-shrink w-56 h-56 rounded-full object-cover 
         md:rounded-lg md:w-64 md:h-96 xl:w-[500px] xl:h-[600px]"
       />
@@ -30,15 +34,7 @@ export default function About({}: Props) {
           <span className="underline decoration-[#F7AB0A]/50">little</span>{" "}
           background
         </h4>
-        <p className="text-base">
-          10+ years of experience in full stack development with JavaScript,
-          NodeJS and Microservices. Programming is not my job, a passion towards
-          doing some good apps, enhancing this technology and creating
-          groundbreaking apps. Reading on GitHub and capturing new ideas, coding
-          standards and acquiring skills is my hobby too. Progressively updating
-          my skills on technical skills and technical management (Architect)
-          skills.
-        </p>
+        <p className="text-base">{pageInfo?.backgroundInformation}</p>
       </div>
     </motion.div>
   );
