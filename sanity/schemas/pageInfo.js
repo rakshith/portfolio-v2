@@ -29,7 +29,7 @@ export default {
     {
       name: "profilePic",
       title: "ProfilePic",
-      type: "string",
+      type: "image",
       options: {
         hotspot: true,
       },
