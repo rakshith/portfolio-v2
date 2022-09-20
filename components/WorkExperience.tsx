@@ -16,7 +16,11 @@ export default function WorkExperience({}: Props) {
         Experience
       </h3>
 
-      <div className="flex w-full space-x-5 overflow-x-scroll p-10 snap-x snap-mandatory mt-40">
+      <div
+        className="flex w-full space-x-5 overflow-x-scroll p-10 
+      snap-x snap-mandatory mt-40 scrollbar 
+      scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80"
+      >
         <ExperienceCard />
         <ExperienceCard />
         <ExperienceCard />
