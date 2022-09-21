@@ -1,4 +1,5 @@
 import type { GetStaticProps, NextPage } from "next";
+import Head from "next/head";
 import Link from "next/link";
 import About from "../components/About";
 import ContactMe from "../components/ContactMe";
@@ -29,6 +30,10 @@ const Home = ({ pageInfo, experiences, skills, socials, projects }: Props) => {
     snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar 
     scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80"
     >
+      <Head>
+        <title>{pageInfo?.name} - Portfolio</title>
+      </Head>
+
       <Header socials={socials} />
 
       <section id="hero" className="snap-start">
